@@ -10,6 +10,12 @@ module TestGuru
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.time_zone = 'Moscow'
+    locale = params[:locale].to_sym
+	locale = nil unless I18n.available_locales.include?(locale)
+	cookies.permanent[:locale] = locale 
+	current_user.update(language: locale )
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
