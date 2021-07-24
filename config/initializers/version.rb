@@ -1,5 +1,5 @@
 class TestGuru
-  def version
-    return "version: 0.0.0"
+  def self.version
+    "version: 0.1.0"
   end
 end
