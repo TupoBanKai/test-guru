@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   def tests_by_level(level)
-    UserTest.joins('JOIN tests ON tests.id = user_tests.test_id').
+    Test.joins('JOIN user_tests ON user_tests.id = tests.id').
       where('user_tests.user_id = ?', self.id).where('level = ?', level)
   end
 end
