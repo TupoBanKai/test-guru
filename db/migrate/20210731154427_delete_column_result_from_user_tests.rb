@@ -4,6 +4,6 @@ class DeleteColumnResultFromUserTests < ActiveRecord::Migration[6.0]
   end
 
   def down
-    add_reference :tests, :user, foreign_key: true, null: false
+    add_column :user_tests, :result, :integer
   end
 end
