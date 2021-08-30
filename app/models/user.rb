@@ -5,9 +5,9 @@ class User < ApplicationRecord
   has_many :tests, through: :user_tests
   has_many :created_tests, class_name: 'Test', foreign_key: :creator_id
 
-  scope :tests_by_level, -> (level) { where(level: level) }
+  scope :tests_by_level, -> (level) { Test.where(level: level) }
 
-  validate: :name, presence: true
+  validates: :name, presence: true
 
   # def tests_by_level(level)
   #   tests.where(level: level)

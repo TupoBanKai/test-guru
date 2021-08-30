@@ -3,7 +3,7 @@
 class Category < ApplicationRecord
   has_many :tests
 
-  scope :names, -> { where(title: :asc) }
+  scope :sort_category_names, -> { where(title: :asc) }
 
-  validate: :title, presence: true
+  validates: :title, presence: true
 end

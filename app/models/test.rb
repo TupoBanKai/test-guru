@@ -10,18 +10,13 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
-  scope :category_tests, -> (category_name) {
+  scope :join_categories, -> (category_name) {
     where('JOIN categories ON tests.category_id = categories.id')
-    .where('categories.title  = ?', category_name).order(title: :desc).pluck(:title)
+    .where('categories.title  = ?', category_name)
    }
 
-    validate: :title, presence: true, uniqueness: true
-    validate: :level, presence: true, uniqueness: true
-    validate: :level, :min_level
-
-    def min_level
-      errors.add(:level) if level.to_i < 0
-    end
+  validates: { :title, :level }, presence: true, uniqueness: true
+  validate: :level, comparison: { greater_than: 0 }
 
 
 
@@ -29,4 +24,8 @@ class Test < ApplicationRecord
   #   Test.joins('JOIN categories ON tests.category_id = categories.id')
   #       .where('categories.title  = ?', category_name).order(title: :desc).pluck(:title)
   # end
+
+  def self.category_tests
+    join_categories.order(title: :desc).pluck(:title)
+  end
 end
