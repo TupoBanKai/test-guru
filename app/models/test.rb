@@ -15,8 +15,8 @@ class Test < ApplicationRecord
     .where('categories.title  = ?', category_name)
    }
 
-  validates: { :title, :level }, presence: true, uniqueness: true
-  validate: :level, comparison: { greater_than: 0 }
+  validates :title, :level, presence: true, uniqueness: true
+  validates :level, numericality: { greater_than: 0 }
 
 
 
