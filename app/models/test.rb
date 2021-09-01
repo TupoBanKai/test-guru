@@ -11,19 +11,12 @@ class Test < ApplicationRecord
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
   scope :join_categories, -> (category_name) {
-    where('JOIN categories ON tests.category_id = categories.id')
-    .where('categories.title  = ?', category_name)
+    joins(:category).where('categories.title  = ?', category_name)
    }
 
-  validates :title, :level, presence: true, uniqueness: true
+  validates :title, :level, presence: true
   validates :level, numericality: { greater_than: 0 }
-
-
-
-  # def self.category_tests(category_name)
-  #   Test.joins('JOIN categories ON tests.category_id = categories.id')
-  #       .where('categories.title  = ?', category_name).order(title: :desc).pluck(:title)
-  # end
+  validates :title, uniqueness: { scope: :level }
 
   def self.category_tests
     join_categories.order(title: :desc).pluck(:title)
