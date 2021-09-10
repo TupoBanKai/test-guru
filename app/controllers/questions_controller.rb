@@ -17,9 +17,9 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.new(question_params)
     if question.save
-      Render good
+      render plain: 'ok'
     else
-      Render bad
+      render plain: 'not valid'
     end
 
     render plain: @question.inspect
@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body, :test_id)
+    params.require(:question).permit(:body)
   end
 
   def rescue_with_question_not_found
