@@ -1,23 +1,26 @@
 class QuestionsController < ApplicationController
-  before_action: find_test
+  before_action :find_test, only [:index, :create, :new]
+  before_action :find_question, only: [:show, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    collection = find_test.questions
-
-    render plain: "#{collection.inspect}"
+    @collection = @test.questions
   end
 
   def show
-    find_question
   end
 
   def new
   end
 
   def create
-    @question = Question.create(question_params)
+    @question = @test.questions.new(question_params)
+    if question.save
+      Render good
+    else
+      Render bad
+    end
 
     render plain: @question.inspect
   end
