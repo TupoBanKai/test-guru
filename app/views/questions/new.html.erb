@@ -1,12 +1,4 @@
-<h1>Create new question</h1>
+<%= question_header('Create') %>
 
-<form action="/tests/<%= @test.id%>/questions" method="post">
-  <input name="authenticity_token" value"<%= form_authenticity_token %>" type="hidden">
-
-  <p>
-    <label for="question-body">Body:</label>
-    <input type="question" name="question[body]" id="question-body">
-  </p><br>
-
-  <input type="sumbit" value="Create">
-</form>
+<%= render 'form'%>
+<%= link_to 'Back', test_question_path %>
