@@ -1,11 +1,11 @@
 class TestsController < ApplicationController
   before_action :find_test, only: [:show]
   def index
-    @collection = Test.all
+    @tests = Test.all
   end
 
   def show
-    @question_collection = @test.questions
+    @question = @test.questions
   end
 
   def edit

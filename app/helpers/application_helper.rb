@@ -1,9 +1,9 @@
 module ApplicationHelper
   def current_date
-    DateTime.now.year
+    Date.today.year
   end
 
   def current_link_to_project
-    "<a href='https://github.com/TupoBanKai/test-guru'>Учебный проект в онайн-школе Thinknetica</a>".html_safe
+    link_to('Учебный проект в онайн-школе Thinknetica', 'https://github.com/TupoBanKai/test-guru', target: true)
   end
 end
