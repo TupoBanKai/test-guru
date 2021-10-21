@@ -1,0 +1,18 @@
+<h1>Test</h1>
+
+<table>
+    <tr>
+      <th>Tests</th>
+      <th>Questions count</th>
+    </tr>
+  <% @tests.each do |test| %>
+    <tr>
+        <td><%= test.title %></td>
+        <% end %>
+      <td>
+        <% @tests.each do |test| %>
+                <td><%= test.questions.count %></td>
+          <% end %>
+      </td>
+    </tr>
+</table>
