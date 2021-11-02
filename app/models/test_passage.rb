@@ -1,4 +1,6 @@
 class TestPassage < ApplicationRecord
+  CHECK_NUMBER = 85
+
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
@@ -29,7 +31,16 @@ class TestPassage < ApplicationRecord
     all_questions = test.questions
   end
 
+  def success?
+    count_true_answers >= CHECK_NUMBER
+  end
+
+  def count_true_answers
+    correct_answers.count / correct_answers.count * 100
+  end
+
   private
+
 
   def before_validation_set_current_question
     self.current_question = test.questions.first if test.present?

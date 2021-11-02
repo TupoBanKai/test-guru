@@ -1,27 +1,9 @@
 module TestPassagesHelper
-  CHECK_NUMBER = 85
-
-  def set_color
-    if success?
-      "color:green"
+  def set_style
+    if @test_passage.success?
+      "<p style='color:green'> #{@test_passage.count_true_answers} </p><p>You passed the test</p>"
     else
-      "color:red"
-    end
-  end
-
-  def set_state
-    if success?
-      "You passed the test"
-    else
-      "You did not passed the test"
-    end
-  end
-
-  def success?
-    if @count >= CHECK_NUMBER
-      true
-    else
-      false
+      "<p style='color:red'> #{@test_passage.count_true_answers} </p><p>You did not passed the test</p>"
     end
   end
 
