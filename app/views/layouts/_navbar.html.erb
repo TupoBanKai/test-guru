@@ -1,0 +1,11 @@
+<header>
+  <div class = 'container'>
+    <% if logged_in? %>
+      <p class = "nav user"> Welcome, <b><%= current_user.email %></b> Guru </p>
+      <ul> <%= link_to 'logout', logout_path %> </ul>
+      <% else %>
+      <ul> <%= link_to 'Signup', signup_path %> </ul>
+      <ul> <%= link_to 'Login', login_path %> </ul>
+      <ul> <%= link_to 'Test-Guru', tests_path%> </ul>
+    <% end %>
+</header>
