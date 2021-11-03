@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user
-      cookies[:url] = request.url
+      cookies[:url_for_reconnect_after_login] = request.url
       redirect_to login_path, alert: '????'
     end
 
