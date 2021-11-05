@@ -1,6 +1,6 @@
 class AddUniqueIndexToTitleTest < ActiveRecord::Migration[6.0]
   def up
-    add_index :tests, :title, unique: true
+    add_index :tests, [:title, :level], unique: true
   end
 
   def down
