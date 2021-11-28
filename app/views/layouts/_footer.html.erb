@@ -4,8 +4,12 @@
     <nav>
       <p><%= current_date %></p>
       <p> Ряполов Валерий.</p>
+      <p> <%= current_link_to_project %> </p>
       <p>
-      <%= current_link_to_project %>
+
+        <%= link_to 'Signup', signup_path %>
+        <%= link_to 'Login', login_path %>
+        <%= link_to 'Test-Guru', tests_path%>
       </p>
     </nav>
   </div>
