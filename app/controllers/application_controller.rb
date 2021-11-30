@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
                 :logged_in?
 
   def after_sign_in_path_for(resource)
-    admin_tests_path
+    tests_path
   end
 end

@@ -1,6 +1,5 @@
 class TestPassagesController < ApplicationController
   before_action :find_test_passage, only: [:show, :update, :result]
-  before_action :authenticate_user!
 
   def show
 

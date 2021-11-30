@@ -18,8 +18,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def create
-    noi = test_params.merge(creator_id: current_user.id)
-    Test.create!(noi)
+    current_user.created_tests.create(test_params)
     redirect_to admin_tests_path
   end
 
@@ -28,15 +27,10 @@ class Admin::TestsController < Admin::BaseController
     redirect_to tests_path
   end
 
-  def start
-    current_user.tests.push(@test)
-    redirect_to current_user.test_passage(@test)
-  end
-
   private
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id)
+    params.require(:test).permit(:title, :level, :category_id, :creator_id)
   end
 
   def find_test
