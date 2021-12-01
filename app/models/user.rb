@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test_id: test.id)
   end
+
+  def admin_check
+      current_user.admin?
+  end
 end
