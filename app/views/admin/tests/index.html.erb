@@ -10,7 +10,7 @@
         <td><%= test.title %></td>
         <td><%= test.questions.count %></td>
 
-        <td><%=link_to 'Show', tests_path(test) %></td>
+        <td><%=link_to 'Show', admin_test_questions_path(test, test.questions) %></td>
       <td><%=link_to 'Edit', edit_admin_test_path(test) %></td>
       <td><%=link_to 'Delete',
         tests_path(test),

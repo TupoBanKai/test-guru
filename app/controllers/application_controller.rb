@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
                 :logged_in?
 
   def after_sign_in_path_for(resource)
-    if User.admin_check
+    if resource.admin_check
       tests_path
     else
       admin_tests_path

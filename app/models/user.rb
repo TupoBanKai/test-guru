@@ -23,6 +23,6 @@ class User < ApplicationRecord
   end
 
   def admin_check
-      current_user.admin?
+      self.type == "Admin"
   end
 end
