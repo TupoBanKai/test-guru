@@ -24,7 +24,7 @@ class Admin::TestsController < Admin::BaseController
 
   def destroy
     @test.destroy
-    redirect_to tests_path
+    redirect_to admin_tests_path
   end
 
   private

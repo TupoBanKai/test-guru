@@ -23,6 +23,6 @@ class User < ApplicationRecord
   end
 
   def admin_check
-      self.type == "Admin"
+    self.is_a?(Admin)
   end
 end
