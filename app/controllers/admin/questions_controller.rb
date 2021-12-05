@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Admin::QuestionsController < ApplicationController
   before_action :find_test, only: [:index, :create, :new, :edit]
   before_action :find_question, only: [:show, :destroy, :edit]
 
@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
     @question = @test.questions.new(question_params)
 
     if @question.save
-      redirect_to question_path(@question)
+      redirect_to admin_question_path(@question)
     else
       render :new
     end

@@ -1,27 +1,9 @@
 class TestsController < ApplicationController
 
-  before_action :find_test, only: [:show, :start, :desrtoy, :update, :edit]
+  before_action :find_test, only: [:start]
 
   def index
     @tests = Test.all
-  end
-
-  def show
-    @question = @test.questions
-  end
-
-  def edit
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def destroy
-    @test.destroy
-    redirect_to tests_path
   end
 
   def start
