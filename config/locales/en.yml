@@ -6,7 +6,7 @@ en:
   button_start: "Start"
   button_logout: "Logout"
 
-  category_test_title: "Ruby"
+  select_category: "Select category"
 
   welcome: "Welcome,"
 
