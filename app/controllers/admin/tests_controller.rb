@@ -19,7 +19,7 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     current_user.created_tests.create(test_params)
-    redirect_to admin_tests_path
+    redirect_to admin_tests_path, notice: t('.success')
   end
 
   def destroy
