@@ -24,6 +24,8 @@ gem 'puma', '~> 4.1'
 
 gem 'devise', '~> 4.0'
 gem 'bootstrap', '~> 4.3.1'
+gem 'dotenv-rails', groups: [:development, :test]
+gem "octokit", "~> 4.0"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
