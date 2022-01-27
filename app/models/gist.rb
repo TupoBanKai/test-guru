@@ -1,8 +1,9 @@
 class Gist < ApplicationRecord
   belongs_to :question
+  belongs_to :user, foreign_key: :email
 
   def character_limit
-    question.body[1..25]
+    truncate(question.body, length: 25)
   end
 
   def html_url
