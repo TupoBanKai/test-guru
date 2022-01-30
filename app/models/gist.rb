@@ -1,6 +1,6 @@
 class Gist < ApplicationRecord
   belongs_to :question
-  belongs_to :user, foreign_key: :email
+  belongs_to :user
 
   def character_limit
     truncate(question.body, length: 25)

@@ -6,7 +6,7 @@
     </tr>
   <% @gists.each do |gist| %>
     <tr>
-      <td><%=link_to ("#{gist.gist_remote_id}"), html_url %></td>
+      <td><%=link_to ("#{gist.gist_remote_id}"), gist.html_url %></td>
       <td><%=link_to ("#{gist.character_limit}"), admin_gists_path(gist.question) %></td>
 
       <td><%= gist.user.email %></td>

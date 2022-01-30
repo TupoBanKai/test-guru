@@ -21,7 +21,8 @@ class TestPassagesController < ApplicationController
 
   def gist
     result = GistQuestionService.new(@test_passage.current_question).call
-    if result.last_response == 200
+    status = GistQuestionService.client.last_response.status
+    if status == 200 || status == 201
       Gist.create(email_user: @test_passage.user, qeustion: @test_passage.current_quesiton, gist_remote_id: result.id )
       flash[:notice] = t('.success') + result.rels[:repos].href
     else
