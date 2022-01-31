@@ -23,7 +23,7 @@ class GistQuestionService
     }
   end
 
-  def check_status
+  def check_status(result)
     status = @client.last_response.status
     if status == 200 || status == 201
       Gist.create(email_user: @test_passage.user, qeustion: @test_passage.current_quesiton, gist_remote_id: result.id )

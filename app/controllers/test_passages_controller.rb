@@ -21,7 +21,7 @@ class TestPassagesController < ApplicationController
 
   def gist
     result = GistQuestionService.new(@test_passage.current_question).call
-    result.check_status
+    result.check_status(result)
 
     redirect_to @test_passage, flash_options
   end
