@@ -23,6 +23,16 @@ class GistQuestionService
     }
   end
 
+  def check_status
+    status = @client.last_response.status
+    if status == 200 || status == 201
+      Gist.create(email_user: @test_passage.user, qeustion: @test_passage.current_quesiton, gist_remote_id: result.id )
+      flash[:notice] = t('.success') + result.rels[:repos].href
+    else
+      flash[:alert] = t.('failure')
+    end
+  end
+
   def gist_content
     content = [@question.body]
     content += @question.answers.pluck(:body)
