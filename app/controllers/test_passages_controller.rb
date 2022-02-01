@@ -20,8 +20,14 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
-    result.check_status(result)
+    service = GistQuestionService.new(@test_passage.current_question)
+    result = service.call
+    if service.success?
+      Gist.create(email_user: @test_passage.user, qeustion: @test_passage.current_quesiton, gist_remote_id: result.id )
+      flash[:notice] = t('.success') + result.rels[:repos].href
+    else
+      flash[:alert] = t.('failure')
+    end
 
     redirect_to @test_passage, flash_options
   end
