@@ -45,6 +45,9 @@ ru:
   test_passages:
     result:
       header: "Тест %{title} пройден"
+    gist:
+      success: "Gist успешно сохранен!"
+      failure: "Во время сохранения gist произошла ошибка"
 
   admin:
     tests:
@@ -56,6 +59,11 @@ ru:
   tests_mailer:
     completed_test:
       subject: "Да"
+
+  service:
+    gist_question_service:
+      gist_params:
+        question_about: "Вопрос о"
 
   devise:
     confirmations:

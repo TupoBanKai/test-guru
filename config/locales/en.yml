@@ -43,6 +43,9 @@ en:
   test_passages:
     result:
       header: "Test %{title} completed"
+    gist:
+      success: "Gist was saccessuflly created!"
+      failure: "An error ocurred while saving gist"
 
   admin:
     tests:
@@ -54,6 +57,11 @@ en:
   tests_mailer:
     completed_test:
       subject: "Yes"
+
+  service:
+    gist_question_service:
+      gist_params:
+        question_about: "A question about"
 
   devise:
     confirmations:
